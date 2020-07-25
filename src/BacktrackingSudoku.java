@@ -7,175 +7,88 @@ public class BacktrackingSudoku {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		int[][] easy1 = {{ 1, 5, 0, 0, 4, 2, 0, 0, 6 }, 
-						 { 2, 7, 4, 5, 6, 0, 0, 1, 0 }, 
-						 { 0, 0, 6, 0, 0, 7, 4, 0, 2 },
-						 { 0, 1, 0, 0, 0, 0, 0, 4, 0 }, 
-						 { 0, 0, 0, 0, 5, 0, 0, 0, 0 }, 
-						 { 0, 6, 0, 4, 0, 3, 1, 9, 0 },
-						 { 0, 2, 0, 6, 0, 5, 9, 0, 0 }, 
-						 { 9, 8, 5, 0, 3, 0, 0, 6, 0 }, 
-						 { 0, 4, 0, 2, 1, 9, 8, 3, 0 } };
-		
-		int[][] easy2 ={  { 6, 0, 0, 1, 0, 0, 0, 0, 2 }, 
-						  { 8, 0, 1, 0, 9, 0, 0, 0, 0 }, 
-						  { 0, 7, 5, 0, 8, 4, 0, 0, 0 },
-						  { 4, 3, 0, 0, 2, 0, 5, 6, 1 }, 
-						  { 5, 1, 8, 7, 0, 0, 4, 0, 9 }, 
-						  { 0, 9, 6, 4, 1, 0, 3, 0, 0 },
-						  { 0, 0, 0, 0, 7, 0, 0, 0, 0 }, 
-						  { 0, 6, 0, 0, 3, 1, 0, 5, 0 }, 
-						  { 7, 0, 2, 5, 4, 0, 6, 0, 3 } };
-		
-		int[][] easy3 = {{ 6, 4, 0, 0, 3, 0, 0, 0, 7 }, 
-						 { 5, 0, 1, 0, 7, 0, 9, 0, 0 }, 
-						 { 0, 0, 0, 0, 0, 0, 0, 1, 0 },
-						 { 0, 0, 4, 9, 0, 8, 0, 6, 0 }, 
-						 { 0, 8, 0, 0, 0, 3, 0, 2, 0 }, 
-						 { 0, 0, 0, 4, 0, 0, 0, 0, 0 },
-						 { 4, 0, 0, 1, 5, 7, 0, 3, 0 }, 
-						 { 2, 0, 8, 3, 0, 0, 0, 4, 0 }, 
-						 { 7, 5, 0, 0, 0, 0, 0, 9, 6 } };
-		
-		int[][] medium1 = {{ 0, 0, 0, 0, 0, 0, 6, 0, 9 }, 
-						   { 1, 0, 0, 0, 0, 4, 0, 0, 0 }, 
-						   { 0, 0, 5, 3, 0, 6, 8, 2, 1 },
-						   { 0, 0, 4, 6, 7, 0, 0, 5, 0 }, 
-						   { 0, 0, 7, 0, 0, 0, 9, 0, 0 }, 
-						   { 0, 0, 0, 5, 4, 0, 0, 0, 0 },
-						   { 3, 7, 0, 4, 0, 5, 2, 0, 6 }, 
-						   { 0, 0, 0, 0, 0, 0, 5, 1, 0 }, 
-						   { 0, 6, 0, 0, 2, 0, 0, 3, 7 } };
-		
-		
-		int[][] medium2 ={{ 0, 0, 0, 4, 0, 0, 2, 0, 0 }, 
-						{ 0, 0, 2, 0, 0, 0, 0, 1, 8 }, 
-						{ 5, 0, 6, 9, 0, 0, 0, 3, 0 },
-						{ 0, 6, 9, 0, 0, 0, 3, 0, 0 }, 
-						{ 0, 5, 0, 0, 0, 0, 0, 2, 1 }, 
-						{ 8, 0, 0, 1, 5, 7, 6, 0, 9 },
-						{ 0, 0, 0, 0, 3, 0, 9, 6, 0 }, 
-						{ 9, 0, 0, 6, 0, 2, 0, 5, 0 }, 
-						{ 0, 0, 0, 0, 0, 0, 7, 0, 2 } };
-		
-		int[][] expert1 = { { 0, 6, 0, 4, 0, 0, 0, 7, 0 }, 
-							{ 0, 8, 0, 0, 0, 0, 0, 2, 9 }, 
-							{ 0, 7, 0, 0, 2, 0, 5, 0, 0 },
-							{ 0, 0, 5, 6, 0, 0, 0, 0, 4 }, 
-							{ 9, 0, 0, 0, 0, 0, 0, 0, 0 }, 
-							{ 0, 0, 0, 5, 0, 0, 0, 0, 3 },
-							{ 0, 0, 4, 1, 0, 0, 0, 0, 0 }, 
-							{ 8, 0, 0, 0, 9, 0, 0, 0, 0 }, 
-							{ 0, 0, 0, 0, 8, 0, 1, 0, 6 } };
-		
-		int[][] expert2 = { { 6, 0, 0, 3, 0, 0, 0, 0, 0 }, 
-							{ 0, 1, 3, 0, 6, 0, 0, 0, 0 }, 
-							{ 0, 0, 0, 0, 9, 0, 0, 8, 0 },
-							{ 4, 0, 0, 0, 0, 5, 0, 0, 0 }, 
-							{ 0, 6, 0, 0, 0, 4, 0, 9, 0 }, 
-							{ 0, 3, 0, 0, 0, 0, 7, 0, 0 },
-							{ 8, 0, 0, 0, 0, 0, 2, 5, 0 }, 
-							{ 0, 0, 0, 8, 0, 1, 0, 0, 9 }, 
-							{ 0, 4, 0, 9, 0, 0, 0, 0, 1 } };
-		
-		int[][] expert3 = { { 0, 0, 5, 0, 6, 0, 0, 3, 0 }, 
-							{ 0, 0, 0, 1, 0, 0, 0, 0, 9 }, 
-							{ 0, 2, 0, 3, 0, 0, 0, 5, 0 },
-							{ 1, 0, 0, 0, 0, 0, 0, 0, 2 }, 
-							{ 0, 0, 6, 0, 0, 8, 4, 0, 5 }, 
-							{ 0, 0, 4, 0, 0, 0, 0, 1, 0 },
-							{ 0, 7, 0, 0, 0, 0, 8, 0, 0 }, 
-							{ 0, 0, 0, 0, 4, 9, 0, 0, 0 }, 
-							{ 0, 0, 0, 8, 0, 7, 1, 0, 0 } };
-		
-		int[][] expert4 = { { 5, 0, 0, 9, 0, 0, 6, 0, 0 }, 
-							{ 0, 0, 9, 2, 0, 0, 8, 3, 0 }, 
-							{ 0, 0, 0, 0, 1, 0, 0, 4, 0 },
-							{ 0, 9, 0, 0, 0, 0, 0, 0, 0 }, 
-							{ 0, 0, 0, 0, 0, 6, 0, 8, 4 }, 
-							{ 0, 1, 0, 0, 0, 0, 3, 0, 6 },
-							{ 0, 6, 2, 0, 7, 0, 0, 0, 5 }, 
-							{ 3, 0, 0, 5, 0, 0, 0, 2, 0 }, 
-							{ 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
-		
-		int[][] expert5 = { { 0, 0, 0, 0, 0, 0, 0, 5, 7 }, 
-							{ 0, 0, 0, 0, 0, 6, 0, 0, 0 }, 
-							{ 1, 0, 0, 7, 0, 0, 0, 9, 6 },
-							{ 6, 0, 0, 0, 0, 0, 4, 0, 0 }, 
-							{ 0, 0, 0, 0, 2, 0, 0, 0, 0 }, 
-							{ 0, 4, 3, 0, 0, 0, 0, 0, 0 },
-							{ 0, 0, 8, 0, 1, 0, 0, 0, 9 }, 
-							{ 0, 9, 0, 2, 0, 7, 8, 0, 0 }, 
-							{ 0, 0, 5, 0, 8, 4, 0, 7, 0 } };
-		
+	boolean tmp = true;
+
+		SudokuExamples sd = new SudokuExamples();
 		Scanner sc = new Scanner(System.in);  // Create a Scanner object
-		System.out.println("Zgjedhni njerin nga opsionet per veshtersine e sudokut:\n e(easy) m(medium) h(hard)");
+		System.out.println("Choose sudoku difficulty:\n e(easy) m(medium) h(hard)");
 	    String level = sc.nextLine(); 
 	    if(level.equals("h")) {
-			System.out.println("Zgjedhni njerin nga opsionet: 1 deri 5");
+			System.out.println("Choose from 1 to 5:");
 		    String op = sc.nextLine();
 		    if(op.equals("1")) {
 		    	startTime=System.currentTimeMillis();
-		    	backtracking(expert1, 0, 0);}
+		    	backtracking(sd.hard1, 0, 0);}
 		    else if(op.equals("2")){
 		    	startTime=System.currentTimeMillis();
-		    	backtracking(expert2, 0, 0);}
+		    	backtracking(sd.hard2, 0, 0);}
 		    else if(op.equals("3")){
 		    	startTime=System.currentTimeMillis();
-		    	backtracking(expert3, 0, 0);}
+		    	backtracking(sd.hard3, 0, 0);}
 		    else if(op.equals("4")){
 		    	startTime=System.currentTimeMillis();
-		    	backtracking(expert4, 0, 0);}
+		    	backtracking(sd.hard4, 0, 0);}
 		    else if(op.equals("5")){
 		    	startTime=System.currentTimeMillis();
-		    	backtracking(expert5, 0, 0);}
-		    else
-		    	System.out.println("Nuk ishte nje opsion valid!");
-	    }
+		    	backtracking(sd.hard5, 0, 0);}
+		    else{
+				System.out.println("Input wasn't valid!");
+	    		tmp = false;
+				}
+			}
 	    else if(level.contentEquals("e")) {
-	    	System.out.println("Zgjedhni njerin nga opsionet: 1 deri 3");
+	    	System.out.println("Choose from 1 to 3:");
 		    String op = sc.nextLine();
 		    if(op.equals("1")) {
 		    	startTime=System.currentTimeMillis();
-		    	backtracking(easy1, 0, 0);}
+		    	backtracking(sd.easy1, 0, 0);}
 		    else if(op.equals("2")){
 		    	startTime=System.currentTimeMillis();
-		    	backtracking(easy2, 0, 0);}
+		    	backtracking(sd.easy2, 0, 0);}
 		    else if(op.equals("3")){
 		    	startTime=System.currentTimeMillis();
-		    	backtracking(easy3, 0, 0);}
-	    else
-	    	System.out.println("Nuk ishte nje opsion valid!");
-    }
+		    	backtracking(sd.easy3, 0, 0);}
+	    else{
+			System.out.println("Input wasn't valid!");
+	    	tmp = false;
+			}
+	    }
 	    else if(level.contentEquals("m")) {
-	    	System.out.println("Zgjedhni njerin nga opsionet: 1 deri 2");
+	    	System.out.println("Choose 1 or 2:");
 		    String op = sc.nextLine();
 		    if(op.equals("1")) {
 		    	startTime=System.currentTimeMillis();
-		    	backtracking(easy1, 0, 0);}
+		    	backtracking(sd.medium1, 0, 0);}
 		    else if(op.equals("2")){
 		    	startTime=System.currentTimeMillis();
-		    	backtracking(easy2, 0, 0);}
-		    else
-		    	System.out.println("Nuk ishte nje opsion valid!");
-    }	    
+		    	backtracking(sd.medium2, 0, 0);}
+		    else{
+				System.out.println("Input wasn't valid!");
+	    		tmp = false;
+				} 
+		}
+		else {
+			System.out.println("Input wasn't valid!");
+	    	tmp = false;
+		}
+		if(tmp){	    
 	    endTime=System.currentTimeMillis();
     	totalTime=endTime-startTime;
-    	System.out.println("Zgjidhja perfundoi per: "+ totalTime+"ms");
-    	
+    	System.out.println("Solution was completed in "+ totalTime+"ms");
+
 	}
+}
 	static long startTime=0,endTime=0,totalTime=0;
 	
 	public static void printSudoku(int[][] sudoku) {
 		StringBuilder sb = new StringBuilder();
-		for (int rreshti = 0; rreshti < 9; rreshti++) {
-			for (int kolona = 0; kolona < 9; kolona++) {
-				sb.append(sudoku[rreshti][kolona] + " ");
-				if (kolona == 2 || kolona == 5)
+		for (int row = 0; row < 9; row++) {
+			for (int col = 0; col < 9; col++) {
+				sb.append(sudoku[row][col] + " ");
+				if (col == 2 || col == 5)
 					sb.append("| ");
 			}
-			if (rreshti == 2 || rreshti == 5)
+			if (row == 2 || row == 5)
 				sb.append("\n ------------------- \n");
 			else
 				sb.append("\n");
@@ -185,143 +98,143 @@ public class BacktrackingSudoku {
 
 	static Stack<Integer> stack = new Stack<Integer>();
 
-	static void backtracking(int[][] sudoku, int rreshti, int kolona) {
+	static void backtracking(int[][] sudoku, int row, int col) {
 		boolean test = false;
-		while (rreshti < 9 && kolona < 9) {
-			if (sudoku[rreshti][kolona] == 0)
+		while (row < 9 && col < 9) {
+			if (sudoku[row][col] == 0)
 				for (int i = 1; i <= 9; i++) {
 					test = true;
-					if (validoSudokun(sudoku, rreshti, kolona, i)) {
-						sudoku[rreshti][kolona] = i;
-						stack.push(kolona);
-						stack.push(rreshti);
-						backtracking(sudoku, rreshti, kolona);
+					if (validSudoku(sudoku, row, col, i)) {
+						sudoku[row][col] = i;
+						stack.push(col);
+						stack.push(row);
+						backtracking(sudoku, row, col);
 					}
-					sudoku[rreshti][kolona] = 0;
+					sudoku[row][col] = 0;
 				}
 
 			if (test) {
-				rreshti = stack.pop();
-				kolona = stack.pop();
+				row = stack.pop();
+				col = stack.pop();
 				return;
-			} else if (kolona == 8) {
-				kolona = 0;
-				rreshti++;
+			} else if (col == 8) {
+				col = 0;
+				row++;
 			} else
-				kolona++;
+				col++;
 		}
-		if (kontrolloZgjidhjen(sudoku)) {
+		if (solution(sudoku)) {
 			printSudoku(sudoku);
 		}
 	}
 	/*
 	 * public static int[][] testque(int[][] sudoku, Stack<Integer> stack) { int
-	 * rreshti = stack.pop(); int kolona = stack.pop();
-	 * if(sudoku[rreshti][kolona]==9) { sudoku[rreshti][kolona]=0;
+	 * row = stack.pop(); int col = stack.pop();
+	 * if(sudoku[row][col]==9) { sudoku[row][col]=0;
 	 * System.out.println(stack); testque(sudoku,stack); } else
-	 * sudoku[rreshti][kolona]=sudoku[rreshti][kolona]+1; return sudoku;
+	 * sudoku[row][col]=sudoku[row][col]+1; return sudoku;
 	 * 
 	 * }
 	 */
 
-	public static boolean kontrolloZgjidhjen(int[][] sudoku) {
-		boolean zgjidhja = true;
+	public static boolean solution(int[][] sudoku) {
+		boolean solution = true;
 
-		for (int rreshti = 0; rreshti < 9; rreshti++)
-			for (int kolona = 0; kolona < 9; kolona++)
-				if (sudoku[rreshti][kolona] == 0)
-					zgjidhja = false;
+		for (int row = 0; row < 9; row++)
+			for (int col = 0; col < 9; col++)
+				if (sudoku[row][col] == 0)
+					solution = false;
 
-		return zgjidhja;
+		return solution;
 	}
 
-	public static boolean validoSudokun(int[][] sudoku1, int pozitarr, int pozitak, int vlera) {
+	public static boolean validSudoku(int[][] sudoku1, int posrow, int poscol, int value) {
 		int[][] sudoku = Arrays.stream(sudoku1).map(int[]::clone).toArray(int[][]::new);
-		sudoku[pozitarr][pozitak] = vlera;
+		sudoku[posrow][poscol] = value;
 
-		// valido rreshtin
-		for (int rreshti = 0; rreshti < 9; rreshti++) {
-			for (int kolona = 0; kolona < 8; kolona++) {
-				int pozita = sudoku[rreshti][kolona];
-				for (int kolona1 = kolona; kolona1 < 8; kolona1++) {
-					if (pozita == 0)
+		// validate row
+		for (int row = 0; row < 9; row++) {
+			for (int col = 0; col < 8; col++) {
+				int pos = sudoku[row][col];
+				for (int col1 = col; col1 < 8; col1++) {
+					if (pos == 0)
 						continue;
 					else {
-						if (pozita == sudoku[rreshti][kolona1 + 1])
+						if (pos == sudoku[row][col1 + 1])
 							return false;
 					}
 				}
 			}
 		}
-		// valido kolonen
-		for (int kolona = 0; kolona < 9; kolona++) {
-			for (int rreshti = 0; rreshti < 8; rreshti++) {
-				int pozita = sudoku[rreshti][kolona];
-				for (int rreshti1 = rreshti; rreshti1 < 8; rreshti1++) {
-					if (pozita == 0)
+		// validate column
+		for (int col = 0; col < 9; col++) {
+			for (int row = 0; row < 8; row++) {
+				int pos = sudoku[row][col];
+				for (int row1 = row; row1 < 8; row1++) {
+					if (pos == 0)
 						continue;
 					else {
-						if (pozita == sudoku[rreshti1 + 1][kolona])
+						if (pos == sudoku[row1 + 1][col])
 							return false;
 					}
 				}
 			}
 		}
 
-		// valido katroret 3x3
-		for (int rreshti = 0; rreshti < 9; rreshti += 3) {
-			for (int kolona = 0; kolona < 9; kolona += 3) {
-				for (int rreshti1 = rreshti; rreshti1 < rreshti + 3; rreshti1++) {
-					for (int kolona1 = kolona; kolona1 < kolona + 3; kolona1++) {
-						int pozita = sudoku[rreshti1][kolona1];
-						if (pozita == 0)
+		// validate squares 3x3
+		for (int row = 0; row < 9; row += 3) {
+			for (int col = 0; col < 9; col += 3) {
+				for (int row1 = row; row1 < row + 3; row1++) {
+					for (int col1 = col; col1 < col + 3; col1++) {
+						int pos = sudoku[row1][col1];
+						if (pos == 0)
 							continue;
 						else {
-							if ((rreshti1 == 0 || rreshti1 == 3 || rreshti1 == 6)
-									&& (kolona1 == 0 || kolona1 == 3 || kolona1 == 6))
-								if (pozita == sudoku[rreshti1 + 1][kolona1 + 1]
-										|| pozita == sudoku[rreshti1 + 1][kolona1 + 2]
-										|| pozita == sudoku[rreshti1 + 2][kolona1 + 1]
-										|| pozita == sudoku[rreshti1 + 2][kolona1 + 2])
+							if ((row1 == 0 || row1 == 3 || row1 == 6)
+									&& (col1 == 0 || col1 == 3 || col1 == 6))
+								if (pos == sudoku[row1 + 1][col1 + 1]
+										|| pos == sudoku[row1 + 1][col1 + 2]
+										|| pos == sudoku[row1 + 2][col1 + 1]
+										|| pos == sudoku[row1 + 2][col1 + 2])
 									return false;
 								else
 									continue;
-							else if ((rreshti1 == 0 || rreshti1 == 3 || rreshti1 == 6)
-									&& (kolona1 == 1 || kolona1 == 4 || kolona1 == 7))
-								if (pozita == sudoku[rreshti1 + 1][kolona1 - 1]
-										|| pozita == sudoku[rreshti1 + 1][kolona1 + 1]
-										|| pozita == sudoku[rreshti1 + 2][kolona1 - 1]
-										|| pozita == sudoku[rreshti1 + 2][kolona1 + 1])
+							else if ((row1 == 0 || row1 == 3 || row1 == 6)
+									&& (col1 == 1 || col1 == 4 || col1 == 7))
+								if (pos == sudoku[row1 + 1][col1 - 1]
+										|| pos == sudoku[row1 + 1][col1 + 1]
+										|| pos == sudoku[row1 + 2][col1 - 1]
+										|| pos == sudoku[row1 + 2][col1 + 1])
 									return false;
 								else
 									continue;
-							else if ((rreshti1 == 0 || rreshti1 == 3 || rreshti1 == 6)
-									&& (kolona1 == 2 || kolona1 == 5 || kolona1 == 8))
-								if (pozita == sudoku[rreshti1 + 1][kolona1 - 1]
-										|| pozita == sudoku[rreshti1 + 1][kolona1 - 2]
-										|| pozita == sudoku[rreshti1 + 2][kolona1 - 1]
-										|| pozita == sudoku[rreshti1 + 2][kolona1 - 2])
+							else if ((row1 == 0 || row1 == 3 || row1 == 6)
+									&& (col1 == 2 || col1 == 5 || col1 == 8))
+								if (pos == sudoku[row1 + 1][col1 - 1]
+										|| pos == sudoku[row1 + 1][col1 - 2]
+										|| pos == sudoku[row1 + 2][col1 - 1]
+										|| pos == sudoku[row1 + 2][col1 - 2])
 									return false;
 								else
 									continue;
-							else if ((rreshti1 == 1 || rreshti1 == 4 || rreshti1 == 7)
-									&& (kolona1 == 0 || kolona1 == 3 || kolona1 == 6))
-								if (pozita == sudoku[rreshti1 + 1][kolona1 + 1]
-										|| pozita == sudoku[rreshti1 + 1][kolona1 + 2])
+							else if ((row1 == 1 || row1 == 4 || row1 == 7)
+									&& (col1 == 0 || col1 == 3 || col1 == 6))
+								if (pos == sudoku[row1 + 1][col1 + 1]
+										|| pos == sudoku[row1 + 1][col1 + 2])
 									return false;
 								else
 									continue;
-							else if ((rreshti1 == 1 || rreshti1 == 4 || rreshti1 == 7)
-									&& (kolona1 == 1 || kolona1 == 4 || kolona1 == 7))
-								if (pozita == sudoku[rreshti1 + 1][kolona1 + 1]
-										|| pozita == sudoku[rreshti1 + 1][kolona1 - 1])
+							else if ((row1 == 1 || row1 == 4 || row1 == 7)
+									&& (col1 == 1 || col1 == 4 || col1 == 7))
+								if (pos == sudoku[row1 + 1][col1 + 1]
+										|| pos == sudoku[row1 + 1][col1 - 1])
 									return false;
 								else
 									continue;
-							else if ((rreshti1 == 1 || rreshti1 == 4 || rreshti1 == 7)
-									&& (kolona1 == 2 || kolona1 == 5 || kolona1 == 8))
-								if (pozita == sudoku[rreshti1 + 1][kolona1 - 1]
-										|| pozita == sudoku[rreshti1 + 1][kolona1 - 2])
+							else if ((row1 == 1 || row1 == 4 || row1 == 7)
+									&& (col1 == 2 || col1 == 5 || col1 == 8))
+								if (pos == sudoku[row1 + 1][col1 - 1]
+										|| pos == sudoku[row1 + 1][col1 - 2])
 									return false;
 								else
 									continue;
